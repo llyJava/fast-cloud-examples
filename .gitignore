@@ -1,6 +1,7 @@
 
 # User-specific stuff
 .idea/**/
+.idea
 .DS_Store
 fast-cloud-discovery/.DS_Store
 fast-cloud-discovery/README.md
