@@ -4,10 +4,4 @@
 .idea
 .DS_Store
 fast-cloud-discovery/.DS_Store
-fast-cloud-discovery/README.md
 fast-cloud-discovery/fast-cloud-discovery.iml
-fast-cloud-discovery/fast-cloud-eureka/.gitignore
-fast-cloud-discovery/fast-cloud-eureka/README.md
-fast-cloud-discovery/fast-cloud-eureka/pom.xml
-fast-cloud-discovery/fast-cloud-eureka/src/
-fast-cloud-discovery/pom.xml
