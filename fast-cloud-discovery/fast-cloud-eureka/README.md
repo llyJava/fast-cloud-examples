@@ -135,9 +135,10 @@ eureka.client.healthcheck.enabled=true
 
 ### 四、访问
 访问localhost:7777,看到下图，说明成功
-![](http://ww1.sinaimg.cn/large/006tNc79ly1g4uvext86lj31mx0u0wg5.jpg)
-代码地址
-[]
+![](http://ww1.sinaimg.cn/large/006tNc79ly1g4uvext86lj31mx0u0wg5.jpg)  
+
+代码地址,请选择`eureka`分支，`master`分支为完整代码
+[https://github.com/liangliang1259/fast-cloud-examples/tree/eureka](https://github.com/liangliang1259/fast-cloud-examples/tree/eureka)
 
 
 欢迎关注公众号，更多内容尽在公众号  
