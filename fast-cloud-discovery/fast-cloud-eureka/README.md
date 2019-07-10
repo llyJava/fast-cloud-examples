@@ -58,8 +58,8 @@ eureka.server.eviction-interval-timer-in-ms: 5000
 出现下图说明EurekaServer启动成功
 ![](http://ww3.sinaimg.cn/large/006tNc79ly1g4tl7b8kh4j31lc0u0wg3.jpg)
 
-## 二、服务消费者配置
-
+## 二、服务提供者配置
+我们把`fast-cloud-admin`作为为服务提供者
 ### 引入pom
 ```
 
@@ -86,3 +86,60 @@ public class CloudAdminApplication {
 
 }
 ```
+
+## 三、服务消费者配置
+我们把`fast-cloud-data`作为为服务消费者
+##### 配置
+同Admin服务同样
+```xml
+<!-- 引入客户端 -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+<!--springboot2版本要求引入此包-->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+```
+##### 入口类配置
+也同二
+```java
+@EnableDiscoveryClient
+@SpringBootApplication
+public class CloudAdminApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(CloudAdminApplication.class, args);
+	}
+
+}
+```
+##### 加入配置文件
+在properties中添加配置文件，同二
+```properties
+#================================eureka配置==============================
+#注册到eureka中心，获取到配置服务
+eureka.client.service-url.defaultZone=http://localhost:7777/eureka/
+#设置实例的ID为ip:port
+#eureka.instance.instance-id=${spring.cloud.client.ipAddress}:${server.port}
+#================================续约配置============================
+# 心跳时间，即服务续约间隔时间（缺省为30s）
+eureka.instance.lease-renewal-interval-in-seconds=5
+# 发呆时间，即服务续约到期时间（缺省为90s）
+eureka.instance.lease-expiration-duration-in-seconds=10
+# 开启健康检查（依赖spring-boot-starter-actuator）
+eureka.client.healthcheck.enabled=true
+``` 
+
+### 四、访问
+访问localhost:7777,看到下图，说明成功
+![](http://ww1.sinaimg.cn/large/006tNc79ly1g4uvext86lj31mx0u0wg5.jpg)
+代码地址
+[]
+
+
+欢迎关注公众号，更多内容尽在公众号  
+
+![](http://ww3.sinaimg.cn/large/006tNc79ly1g4uvj1p94ej30e40dqwet.jpg)
