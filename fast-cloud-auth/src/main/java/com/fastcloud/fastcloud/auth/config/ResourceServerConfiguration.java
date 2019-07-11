@@ -7,6 +7,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Describe:
  *
@@ -16,22 +18,22 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
-    private static final String DEMO_RESOURCE_ID = "order";
-    @Override
-    public void configure(ResourceServerSecurityConfigurer resources) {
-        resources.resourceId(DEMO_RESOURCE_ID).stateless(true);
-    }
-
+    /**
+     * 资源控制
+     * @param http
+     * @throws Exception
+     */
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+
+        http.csrf().disable()
+                .exceptionHandling()
+                .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
                 .and()
-                .requestMatchers().anyRequest()
+                .authorizeRequests().antMatchers("/oauth/**","/oauth2/**","/open-api/v1/uaa/oauth2/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .anonymous()
-                .and()
-                .authorizeRequests()
-                .antMatchers("/order/**").authenticated();//配置order访问控制，必须认证过后才可以访问
+                .httpBasic();
+
     }
 }
