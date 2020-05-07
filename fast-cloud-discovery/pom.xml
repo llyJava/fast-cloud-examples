@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <packaging>pom</packaging>
-    <groupId>com.liangliang</groupId>
+    <groupId>com.luoliyin</groupId>
     <artifactId>fast-cloud-discovery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>fast-cloud-discovery</name>

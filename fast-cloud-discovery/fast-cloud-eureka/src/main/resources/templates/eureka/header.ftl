@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="<@spring.url dashboardPath/>">阿亮测试Eureka</a>
+                    <a href="<@spring.url dashboardPath/>">罗立银测试Eureka</a>
                 </li>
                 <li>
                     <a href="<@spring.url dashboardPath/>/lastn">Last 1000 since startup</a>

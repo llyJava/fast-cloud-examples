@@ -8,7 +8,7 @@
         <version>2.1.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.liangliang.fastcloud</groupId>
+    <groupId>com.luoliyin.fastcloud</groupId>
     <artifactId>fast-cloud-eureka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>fast-cloud-eureka</name>
